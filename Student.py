@@ -6,6 +6,8 @@ class Student:
         self.grades = {}
         self.courses_attached = []
         self.lect_grades = {}
+        self.grade_st = 0
+        self.grade_lec = 0
 
 
     def rate_lec(self, lecturer, course, grade):
@@ -51,6 +53,15 @@ class Lecturer(Student, Mentor):
 
     def __str__(self):
         return f"Лектор \nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {grade_lec}"
+
+    def __eq__(self, other):
+        return self.grade_st == other.grade_lec
+
+    def __lt__(self, other):
+        return self.grade_st < other.grade_lec
+
+    def __gt__(self, other):
+        return self.grade_st > other.grade_lec
 
 
 def calc(main_list: list):
@@ -119,4 +130,4 @@ print(reviewer)
 print()
 print(cool_lecturer)
 print()
-print(calc(grade_list_st) == calc(grade_list_lec))
+print(grade_st == grade_lec)
